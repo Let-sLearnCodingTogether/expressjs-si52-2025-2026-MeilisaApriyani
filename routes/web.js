@@ -1,19 +1,12 @@
 import express from "express"
+import * as profileController from "../controller/profileController.js"
 
 const web = express.Router()
 
 web.get('/', (req, res) => {
     res.render('index')
 })
-
-web.get('/:username', (req, res) => {
-    const username = req.params.username
-
-   res.render('public-profile',{
-    title : username,
-    username : username,
-    bio : "Test 1234"
-    })
-})
-
-export default web
+                                  
+web.get('/:username', profileController.publicProfile)
+                                                                                          
+export default web                                                                                                                                                                                                                                                                                    
