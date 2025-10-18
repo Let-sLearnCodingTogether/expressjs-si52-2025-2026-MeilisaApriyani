@@ -1,14 +1,14 @@
 import passport from "passport";
 
-import {ExtractJwt, Strategy} from "password-jwt";
+import {ExtractJwt, Strategy} from "passport-jwt";
 
 const opts = {
     jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken(),
-    secretOrkey : "JWT_SECRET_KEY"
+    secretOrKey : "JWT_SECRET_KEY"
 }
 
 passport.use(
-    new Strategy(opts, async(payload, done) => {
+    new Strategy(opts, async (payload, done) => {
         try{
             const user = await UserModel.findById({
                 email : payload.email

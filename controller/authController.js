@@ -1,6 +1,6 @@
 import UserModel from "../models/userModel.js";
-import { compare, hash } from "../utils/hashUtil.js";
-import jwtSignUtil from "..util/jwtSignUtil.js";
+import { hash, compare } from "../utils/hashUtil.js";
+import { jwtSignUtil } from "../utils/jwtSignUtil.js";
 
 export const register = async (req, res) => {
     try {
@@ -50,7 +50,7 @@ export const login = async (req,res) => {
         }
 
         // membandingkan password yang ada di dalam db dengan request
-        if(user.password == loginData.password) {
+        if(compare(loginData.password, user.password)){
             return res.status(200).json({
                 message: "Login berhasil",
                 data: {
