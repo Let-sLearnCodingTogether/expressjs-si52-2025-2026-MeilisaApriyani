@@ -54,7 +54,7 @@ export const login = async (req,res) => {
                 data: {
                     username : user.username,
                     email : user.email,
-                    token : "TOKEN"
+                    token : jwtSignUtil(user)
                 }
             })
         }
