@@ -1,4 +1,6 @@
 import UserModel from "../models/userModel.js";
+import { compare, hash } from "../utils/hashUtil.js";
+import jwtSignUtil from "..util/jwtSignUtil.js";
 
 export const register = async (req, res) => {
     try {
