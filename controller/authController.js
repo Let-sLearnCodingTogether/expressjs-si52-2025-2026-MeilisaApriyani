@@ -14,7 +14,7 @@ export const register = async (req, res) => {
         await UserModel.create({
             username : registerData.username,
             email : registerData.email,
-            password : hashpassword
+            password : hashPassword
 
         })
 
@@ -37,7 +37,7 @@ export const login = async (req,res) => {
         const loginData = req.body
 
         // Mencari user berdasarkan email
-        const user = await UserModel.findone({
+        const user = await UserModel.findOne({
             email: loginData.email
         })
 
@@ -60,14 +60,9 @@ export const login = async (req,res) => {
                 }
             })
         }
-        res.status(500).json({
-            message : e.message,
-            data : null
-        })
-
     }  catch (error) {
         res.status(500).json({
-            message : error,
+            message : error.message,
             data : null
         })
     }
