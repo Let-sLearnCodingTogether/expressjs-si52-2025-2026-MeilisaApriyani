@@ -19,7 +19,7 @@ passport.use(
             }
 
             return done (null, {
-                id : user,_id,
+                id : user._id,
                 email : user.email,
                 username : user.username
             })
